@@ -28,6 +28,8 @@ alpha_23 = m_b * l_b * g;
 alpha_24 = - (K_e * K_t) / (R_m);
 beta_2 = -(K_t)/(R_m);
 
+delta = gamma_11*gamma_22 - gamma_12*gamma_21;
+
 a_22 = (gamma_22*alpha_12 - gamma_12*alpha_22) / delta;
 a_23 = (gamma_22*alpha_13 - gamma_12*alpha_23) / delta;
 a_24 = (gamma_22*alpha_14 - gamma_12*alpha_24)/ delta;
@@ -40,12 +42,33 @@ b_4 = (-gamma_21*beta_1)/delta;
 
 
 
-delta = gamma_11*gamma_22 - gamma_12*gamma_21;
+
 
 A = [0 1 0 0; 0 a_22 a_23 a_24; 0 0 0 1; 0 a_42 a_43 a_44];
 
 B = [0; b_2; 0; b_4];
 
+%The right B
+
+B = [0 20.5759 0 -90.0275]';
+
 C = [0 0 1 0];
+
+ctrl = [B ,A*B, A^2*B, A^3*B]; 
+
+rank(ctrl);
+
+obsv = [C; C*A; C*A^2; C*A^3];
+
+rank(obsv);
+
+sys = ss(A,B,C,0);
+
+t_f = tf(sys);
+
+P = eig(A-B*K);
+
+K = acker(A,B,P);
+
 
 

@@ -66,11 +66,31 @@ sys = ss(A,B,C,0);
 
 t_f = tf(sys);
 
-poles = eig(A);
+p = pole(t_f);
+z = zero(t_f);
 
-P = [0, -475.0690, -5.6571, -5.7195];
+p_1 = p(1);
+p_2 = p(2);
+p_3 = p(3);
+pcl_1 = p_1;
+pcl_2 = -p_2;
+pcl_3 = p_3;
+pcl_4 = -10;
+z_1 = z;
 
-K = acker(A,B,P);
 
+K_d = - pcl_1 - pcl_2 - pcl_3  + p_1 + p_2 + p_3;
+K_p = + z_1 * K_d - p_1*p_2 - p_1*p_3 - p_2*p_3 + pcl_1*pcl_2 + pcl_2 + pcl_3 + pcl_1*pcl_4 + pcl_2*pcl_4 + pcl_3*pcl_4;
+K_i = + z_1 * K_p + p_1*p_2*p_3 - pcl_1*pcl_2*pcl_3 - pcl_1*pcl_2*pcl_4 - pcl_1*pcl_3*pcl_4 -  pcl_2*pcl_3*pcl_4; 
 
+s = tf('s');
+pid = K_p + (K_i / s) + (K_d * s);
+
+syscl = (t_f * pid) / (1 + t_f * pid);
+
+syscl = feedback( (t_f * pid) ,1);
+
+pole(syscl);
+zero(syscl);
+zero(sys);
 

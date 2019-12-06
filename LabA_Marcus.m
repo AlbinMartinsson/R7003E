@@ -49,11 +49,17 @@ Ob = ctrb(A', C');
 
 SS_SYS = ss(A, B, C, D);
 TF_SYS = tf(SS_SYS)
+p = pole(TF_SYS);
+
+pcl = [p(1);
+    -p(2);
+    p(3)];
+
 
 s = tf('s');
-Kp = 1;
-Kd = 1;
-Ki = 1;
+Kp = p(1) + p(2) + p(3) - pcl(1) - pcl(2) - pcl(3);
+Kd = - p(1)*p(2) - p(1)*p(3) - p(2)*p(3) + pcl(1)*pcl(2) + pcl(1)*pcl(3) + pcl(2)*pcl(3);
+Ki = p(1)*p(2)*p(3) + pcl(1)*pcl(2)*pcl(3);
 
 %syms Kp Kd Ki
 %syms z1 p1 p2 p3
@@ -61,3 +67,4 @@ Ki = 1;
 %SYS = (s-z1) / ( (s-p1)*(s-p2)*(s-p3) )
 
 %PID = Kp + Ki/s + s*Kd
+

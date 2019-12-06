@@ -66,7 +66,9 @@ sys = ss(A,B,C,0);
 
 t_f = tf(sys);
 
-P = eig(A-B*K);
+poles = eig(A);
+
+P = [0, -475.0690, -5.6571, -5.7195];
 
 K = acker(A,B,P);
 

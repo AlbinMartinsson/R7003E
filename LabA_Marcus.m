@@ -48,30 +48,46 @@ Co = ctrb(A, B);
 Ob = ctrb(A', C');
 
 SS_SYS = ss(A, B, C, D);
-TF_SYS = tf(SS_SYS)
+TF_SYS = tf(SS_SYS);
 p = pole(TF_SYS);
 
 pcl = [p(1);
-    -p(2);
+    -2.6574;
     p(3)];
 
 
 s = tf('s');
-Kp = p(1) + p(2) + p(3) - pcl(1) - pcl(2) - pcl(3);
-Kd = - p(1)*p(2) - p(1)*p(3) - p(2)*p(3) + pcl(1)*pcl(2) + pcl(1)*pcl(3) + pcl(2)*pcl(3);
-Ki = p(1)*p(2)*p(3) + pcl(1)*pcl(2)*pcl(3);
+% Kp = p(1) + p(2) + p(3) - pcl(1) - pcl(2) - pcl(3);
+% Kd = - p(1)*p(2) - p(1)*p(3) - p(2)*p(3) + pcl(1)*pcl(2) + pcl(1)*pcl(3) + pcl(2)*pcl(3);
+% Ki = p(1)*p(2)*p(3) - pcl(1)*pcl(2)*pcl(3);
 
 %New values of Kp, Ki and Kd
 
-%k = -90.03;
-%Kp = (- p(1)*p(2) - p(2)*p(3) + pcl(1)*pcl(2) + pcl(2)*pcl(3)) / k;
-%Ki = (p(1)*p(2)*p(3) + pcl(1)*pcl(2)*pcl(3)) / k;
-%Kd = (p(2)  - pcl(2)) / k;
+k = -90.03;
+Kp = (- p(1)*p(2) - p(2)*p(3) - p(1)*p(3) + pcl(1)*pcl(2) + pcl(2)*pcl(3) + pcl(1)*pcl(3)) / k;
+Ki = (p(1)*p(2)*p(3) - pcl(1)*pcl(2)*pcl(3)) / k;
+Kd = (p(1) + p(2) + p(3)  -  pcl(1) - pcl(2) - pcl(3)) / k;
 
 %syms Kp Kd Ki
 %syms z1 p1 p2 p3
 %syms s
 %SYS = (s-z1) / ( (s-p1)*(s-p2)*(s-p3) )
 
-%PID = Kp + Ki/s + s*Kd
+PID = Kp + Ki/s + s*Kd;
+cl =  feedback(TF_SYS, PID);
+pole(cl);
+
+%For the simulink with disturbance
+
+beta_d = [beta, [l_w; l_b]]
+
+tmpB = inv(gamma) * beta_d;
+Bd = [0, 0; tmpB(1, 1), tmpB(1, 2); 0, 0; tmpB(2, 1), tmpB(2, 2)]
+
+Cd = [1 0 0 0; 0 1 0 0; 0 0 1 0; 0 0 0 1];
+
+Dd = [0 0; 0 0; 0 0; 0 0];
+
+ss(A,Bd,Cd,Dd);
+
 

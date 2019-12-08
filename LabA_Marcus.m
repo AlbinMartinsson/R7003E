@@ -61,6 +61,13 @@ Kp = p(1) + p(2) + p(3) - pcl(1) - pcl(2) - pcl(3);
 Kd = - p(1)*p(2) - p(1)*p(3) - p(2)*p(3) + pcl(1)*pcl(2) + pcl(1)*pcl(3) + pcl(2)*pcl(3);
 Ki = p(1)*p(2)*p(3) + pcl(1)*pcl(2)*pcl(3);
 
+%New values of Kp, Ki and Kd
+
+%k = -90.03;
+%Kp = (- p(1)*p(2) - p(2)*p(3) + pcl(1)*pcl(2) + pcl(2)*pcl(3)) / k;
+%Ki = (p(1)*p(2)*p(3) + pcl(1)*pcl(2)*pcl(3)) / k;
+%Kd = (p(2)  - pcl(2)) / k;
+
 %syms Kp Kd Ki
 %syms z1 p1 p2 p3
 %syms s

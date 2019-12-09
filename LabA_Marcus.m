@@ -64,9 +64,9 @@ s = tf('s');
 %New values of Kp, Ki and Kd
 
 k = -90.03;
-Kp = (- p(1)*p(2) - p(2)*p(3) - p(1)*p(3) + pcl(1)*pcl(2) + pcl(2)*pcl(3) + pcl(1)*pcl(3)) / k;
-Ki = (p(1)*p(2)*p(3) - pcl(1)*pcl(2)*pcl(3)) / k;
-Kd = (p(1) + p(2) + p(3)  -  pcl(1) - pcl(2) - pcl(3)) / k;
+Kp = (- p(1)*p(2) - p(2)*p(3) - p(1)*p(3) + pcl(1)*pcl(2) + pcl(2)*pcl(3) + pcl(1)*pcl(3)) / k
+Ki = (p(1)*p(2)*p(3) - pcl(1)*pcl(2)*pcl(3)) / k
+Kd = (p(1) + p(2) + p(3)  -  pcl(1) - pcl(2) - pcl(3)) / k
 
 %syms Kp Kd Ki
 %syms z1 p1 p2 p3
@@ -79,16 +79,50 @@ pole(cl);
 
 %For the simulink with disturbance
 
-beta_d = [beta, [l_w; l_b]]
+beta_d = [beta, [l_w; l_b]];
 
 tmpB = inv(gamma) * beta_d;
-Bd = [0, 0; tmpB(1, 1), tmpB(1, 2); 0, 0; tmpB(2, 1), tmpB(2, 2)]
+Bd = [0, 0; tmpB(1, 1), tmpB(1, 2); 0, 0; tmpB(2, 1), tmpB(2, 2)];
 
 Cd = [1 0 0 0; 0 1 0 0; 0 0 1 0; 0 0 0 1];
 
 Dd = [0 0; 0 0; 0 0; 0 0];
 
-ss(A,Bd,Cd,Dd);
+sys_dist = ss(A,Bd,Cd,Dd);
+tf_dist = tf(sys_dist);
+
+%--------------------------------------------------------------------
+% simulink parts: TODO fix the plots
+%--------------------------------------------------------------------
+
+% open_system('H:\R7003E-master\R7003E-master\LabA_LinearizedBot');
+% %saveas(get_param('LabA_LinearizedBot','Handle'),'LabA_LinearizedBot_Simulink_diagram.eps');
+% sim('LabA_LinearizedBot');
+% close_system('LabA_LinearizedBot');
+% 
+% 
+% figure(1)
+% plot(x_w.time,x_w.signals.values);
+% title('x_w');
+% xlabel('time');
+% ylabel('meters');
+% set(gcf,'Units','centimeters');
+% set(gcf,'Position',afFigurePosition);
+% set(gcf,'PaperPositionMode','auto');
+% %print('-depsc2','-r300','LabA_LinearizedBot_Simulink_diagram.eps');
+
+%--------------------------------------------------------------------
+% Discretization:
+%--------------------------------------------------------------------
+bw = 13.7;
+
+cf_hertz = cf / (2 * pi);
+freq_interval = 2 * cf_hertz;
+
+%From the book
+Ts = 1/(freq_interval * 25);
+Ts = 0.01;
+
 
 
 %--------------------------------------------------------------------
@@ -97,10 +131,10 @@ ss(A,Bd,Cd,Dd);
 
 Cc = [0, 1, 0, 0];
 
-G2_ss = ss(A, B, Cc, 0)
-G2 = tf(G2_ss)
+G2_ss = ss(A, B, Cc, 0);
+G2 = tf(G2_ss);
 
-H = minreal(G2 * PID)
+H = minreal(G2 * PID);
 
 
 

@@ -52,7 +52,7 @@ TF_SYS = tf(SS_SYS);
 p = pole(TF_SYS);
 
 pcl = [p(1);
-    -2.6574;
+    -15.6574;
     p(3)];
 
 
@@ -64,9 +64,9 @@ s = tf('s');
 %New values of Kp, Ki and Kd
 
 k = -90.03;
-Kp = (- p(1)*p(2) - p(2)*p(3) - p(1)*p(3) + pcl(1)*pcl(2) + pcl(2)*pcl(3) + pcl(1)*pcl(3)) / k
-Ki = (p(1)*p(2)*p(3) - pcl(1)*pcl(2)*pcl(3)) / k
-Kd = (p(1) + p(2) + p(3)  -  pcl(1) - pcl(2) - pcl(3)) / k
+Kp = (- p(1)*p(2) - p(2)*p(3) - p(1)*p(3) + pcl(1)*pcl(2) + pcl(2)*pcl(3) + pcl(1)*pcl(3)) / k;
+Ki = (p(1)*p(2)*p(3) - pcl(1)*pcl(2)*pcl(3)) / k;
+Kd = (p(1) + p(2) + p(3)  -  pcl(1) - pcl(2) - pcl(3)) / k;
 
 %syms Kp Kd Ki
 %syms z1 p1 p2 p3
@@ -115,7 +115,7 @@ tf_dist = tf(sys_dist);
 % Discretization:
 %--------------------------------------------------------------------
 bw = 13.7;
-
+cf = 2 * bw;
 cf_hertz = cf / (2 * pi);
 freq_interval = 2 * cf_hertz;
 

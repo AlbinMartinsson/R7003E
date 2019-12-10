@@ -1,0 +1,32 @@
+%implements s1_b0_axlyr_Terminate "C"
+
+%function Terminate(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%assign tlcTerminateFcnOfS1B0 = OpaqueTLCBlockFcn("Terminate", 1, 0, 0, 5)
+%assign tlcTerminateFcnOfS1B1 = OpaqueTLCBlockFcn("Terminate", 1, 1, 0, 5)
+%assign tlcTerminateFcnOfS1B9 = OpaqueTLCBlockFcn("Terminate", 1, 9, 0, 5)
+%if !WHITE_SPACE(tlcTerminateFcnOfS1B0)
+/* Terminate for ToWorkspace: '<Root>/To Workspace' */
+%<tlcTerminateFcnOfS1B0>\
+%endif
+%if !WHITE_SPACE(tlcTerminateFcnOfS1B1)
+/* Terminate for ToWorkspace: '<Root>/To Workspace ' */
+%<tlcTerminateFcnOfS1B1>\
+%endif
+%if !WHITE_SPACE(tlcTerminateFcnOfS1B9)
+/* Terminate for FromWorkspace: '<S2>/FromWs' */
+%<tlcTerminateFcnOfS1B9>\
+%endif
+%closefile cfgTxt
+%<cfgTxt>
+%endfunction
+%function TerminateFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Terminate(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(0, 5, fcnProtoType)>
+%endfunction

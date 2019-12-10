@@ -1,0 +1,28 @@
+%implements s1_b0_axlyr_Derivatives "C"
+
+%function Derivatives(block, system) Output
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%openfile localVarDecl
+
+XDot_LabB_ControllerOverSimulator_Continuous_T *_rtXdot;
+%closefile localVarDecl
+_rtXdot = %<(SLibCG_SE(SLibGetContStatesDerivativeStructPtr()))>;
+/* Derivatives for Integrator: '<S1>/Integrator' */
+_rtXdot->Integrator_CSTATE[0] = LabB_ControllerOverSimulator_Continuous_B.dx[0];
+_rtXdot->Integrator_CSTATE[1] = LabB_ControllerOverSimulator_Continuous_B.dx[1];
+_rtXdot->Integrator_CSTATE[2] = LabB_ControllerOverSimulator_Continuous_B.dx[2];
+_rtXdot->Integrator_CSTATE[3] = LabB_ControllerOverSimulator_Continuous_B.dx[3];
+%closefile cfgTxt
+%<cfgTxt>
+%<LibSetSystemField(system, "CachedDerivativeLocalVars", localVarDecl)>
+%endfunction
+%function DerivativesFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Derivatives(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(0, 3, fcnProtoType)>
+%endfunction

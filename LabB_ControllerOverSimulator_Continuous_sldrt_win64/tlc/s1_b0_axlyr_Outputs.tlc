@@ -1,0 +1,162 @@
+%implements s1_b0_axlyr_Outputs "C"
+
+%function Outputs(block, system) Output
+%<SLibCGIRAccessLocalVar(3, 0, "")> %% rtb_RateTransition1
+%<SLibCGIRAccessLocalVar(4, 0, "")> %% rtb_RateTransition2
+%<SLibCGIRAccessLocalVar(1, 0, "")> %% rtb_FromWs
+%assign cfgTxt = ""
+%openfile cfgTxt
+%assign localVarDecl = ""
+%openfile localVarDecl
+
+real_T m_t_b;
+real_T rtb_saturationoftheactuators;
+real_T x_tmp;
+real_T dx_tmp;
+real_T dx_tmp_0;
+real_T dx_tmp_1;
+real_T dx_tmp_2;
+real_T dx_tmp_3;
+real_T dx_tmp_4;
+real_T dx_tmp_5;
+%closefile localVarDecl
+%assign tlcOutputsFcnOfS1B0 = OpaqueTLCBlockFcn("Outputs", 1, 0, 0, 2)
+%assign tlcOutputsFcnOfS1B1 = OpaqueTLCBlockFcn("Outputs", 1, 1, 0, 2)
+%assign tlcOutputsFcnOfS1B2 = OpaqueTLCBlockFcn("Outputs", 1, 2, 0, 2)
+%assign tlcOutputsFcnOfS1B3 = OpaqueTLCBlockFcn("Outputs", 1, 3, 0, 2)
+%assign tlcOutputsFcnOfS1B5 = OpaqueTLCBlockFcn("Outputs", 1, 5, 0, 2)
+%assign tlcOutputsFcnOfS1B7 = OpaqueTLCBlockFcn("Outputs", 1, 7, 0, 2)
+%assign tlcOutputsFcnOfS1B9 = OpaqueTLCBlockFcn("Outputs", 1, 9, 0, 2)
+%<SLibGenerateExtModeOutput(system)>
+/* {S!d102}Integrator: '<S1>/Integrator' */
+LabB_ControllerOverSimulator_Continuous_B.Integrator[0] = LabB_ControllerOverSimulator_Continuous_X.Integrator_CSTATE[0];
+LabB_ControllerOverSimulator_Continuous_B.Integrator[1] = LabB_ControllerOverSimulator_Continuous_X.Integrator_CSTATE[1];
+LabB_ControllerOverSimulator_Continuous_B.Integrator[2] = LabB_ControllerOverSimulator_Continuous_X.Integrator_CSTATE[2];
+LabB_ControllerOverSimulator_Continuous_B.Integrator[3] = LabB_ControllerOverSimulator_Continuous_X.Integrator_CSTATE[3];
+if (%<(SLibCGIRIsSampleHit(1, 1))>) {
+    /* {S!d104}SignalConversion: '<Root>/TmpSignal ConversionAtTo WorkspaceInport1' */
+    LabB_ControllerOverSimulator_Continuous_B.TmpSignalConversionAtToWorkspaceInport1[0] = LabB_ControllerOverSimulator_Continuous_B.Integrator[2];
+    LabB_ControllerOverSimulator_Continuous_B.TmpSignalConversionAtToWorkspaceInport1[2] = LabB_ControllerOverSimulator_Continuous_B.Integrator[0];
+    LabB_ControllerOverSimulator_Continuous_B.TmpSignalConversionAtToWorkspaceInport1[1] = LabB_ControllerOverSimulator_Continuous_B.Integrator[3];
+    LabB_ControllerOverSimulator_Continuous_B.TmpSignalConversionAtToWorkspaceInport1[3] = LabB_ControllerOverSimulator_Continuous_B.Integrator[1];
+%if !WHITE_SPACE(tlcOutputsFcnOfS1B0)
+    /* {S!d106}ToWorkspace: '<Root>/To Workspace' */
+%<tlcOutputsFcnOfS1B0>\
+%endif
+}
+/* {S!d108}Gain: '<Root>/Gain1' incorporates:
+ *  SignalConversion: '<Root>/TmpSignal ConversionAtGain1Inport1'
+ */
+LabB_ControllerOverSimulator_Continuous_B.Gain1 = ((-LabB_ControllerOverSimulator_Continuous_P.K[0] * LabB_ControllerOverSimulator_Continuous_B.Integrator[2] + -LabB_ControllerOverSimulator_Continuous_P.K[1] * LabB_ControllerOverSimulator_Continuous_B.Integrator[3]) + -LabB_ControllerOverSimulator_Continuous_P.K[2] * LabB_ControllerOverSimulator_Continuous_B.Integrator[0]) + -LabB_ControllerOverSimulator_Continuous_P.K[3] * LabB_ControllerOverSimulator_Continuous_B.Integrator[1];
+if (%<(SLibCGIRIsSampleHit(1, 1))>) {
+%if !WHITE_SPACE(tlcOutputsFcnOfS1B1)
+    /* {S!d110}ToWorkspace: '<Root>/To Workspace ' */
+%<tlcOutputsFcnOfS1B1>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS1B2)
+    /* {S!d112}Scope: '<Root>/theta_b' */
+%<tlcOutputsFcnOfS1B2>\
+%endif
+%if !WHITE_SPACE(tlcOutputsFcnOfS1B3)
+    /* {S!d114}Scope: '<Root>/x_w' */
+%<tlcOutputsFcnOfS1B3>\
+%endif
+    /* {S!d116}RateTransition: '<S1>/Rate Transition1' */
+    if (%<(SLibCGIRIsSampleHit(2, 1))>) {
+        LabB_ControllerOverSimulator_Continuous_DW.RateTransition1_Buffer = LabB_ControllerOverSimulator_Continuous_B.Integrator[2];
+    }
+}
+/* {S!d120}RateTransition: '<S1>/Rate Transition1' */
+if (%<(SLibCGIRIsSampleHit(2, 1))>) {
+    rtb_RateTransition1 = LabB_ControllerOverSimulator_Continuous_DW.RateTransition1_Buffer;
+%if !WHITE_SPACE(tlcOutputsFcnOfS1B5)
+    /* {S!d118}MATLABFcn: '<S1>/Interpreted MATLAB Function1' incorporates:
+ *  Constant: '<S1>/Constant1'
+ */
+%<tlcOutputsFcnOfS1B5>\
+%endif
+}
+/* {S!d124}RateTransition: '<S1>/Rate Transition2' */
+if (%<(SLibCG_SE(SLibCGIRIsSampleHit(1, 1)))> && %<(SLibCG_SE(SLibCGIRIsSampleHit(2, 1)))>) {
+    LabB_ControllerOverSimulator_Continuous_DW.RateTransition2_Buffer = LabB_ControllerOverSimulator_Continuous_B.Integrator[0];
+}
+if (%<(SLibCGIRIsSampleHit(2, 1))>) {
+    rtb_RateTransition2 = LabB_ControllerOverSimulator_Continuous_DW.RateTransition2_Buffer;
+%if !WHITE_SPACE(tlcOutputsFcnOfS1B7)
+    /* {S!d122}MATLABFcn: '<S1>/Interpreted MATLAB Function4' incorporates:
+ *  Constant: '<S1>/Constant4'
+ */
+%<tlcOutputsFcnOfS1B7>\
+%endif
+}
+/* {E!d124}End of RateTransition: '<S1>/Rate Transition2' */
+
+/* {S!d126}Saturate: '<S1>/saturation of the actuators' */
+if (LabB_ControllerOverSimulator_Continuous_B.Gain1 > LabB_ControllerOverSimulator_Continuous_P.BalancingRobotSimulator_v_m_limit) {
+    rtb_saturationoftheactuators = LabB_ControllerOverSimulator_Continuous_P.BalancingRobotSimulator_v_m_limit;
+} else if (LabB_ControllerOverSimulator_Continuous_B.Gain1 < -LabB_ControllerOverSimulator_Continuous_P.BalancingRobotSimulator_v_m_limit) {
+    rtb_saturationoftheactuators = -LabB_ControllerOverSimulator_Continuous_P.BalancingRobotSimulator_v_m_limit;
+} else {
+    rtb_saturationoftheactuators = LabB_ControllerOverSimulator_Continuous_B.Gain1;
+}
+/* {E!d126}End of Saturate: '<S1>/saturation of the actuators' */
+%if !WHITE_SPACE(tlcOutputsFcnOfS1B9)
+
+/* {S!d128}FromWorkspace: '<S2>/FromWs' */
+%<tlcOutputsFcnOfS1B9>\
+%endif
+/* {S!d130}MATLAB Function: '<S1>/equations of motion' incorporates:
+ *  Constant: '<Root>/Constant'
+ */
+/* MATLAB Function 'Balancing Robot Simulator/equations of motion': '<S3>:1' */
+/* '<S3>:1:26' */
+/* '<S3>:1:27' */
+/* '<S3>:1:29' */
+/* '<S3>:1:33' */
+m_t_b = LabB_ControllerOverSimulator_Continuous_P.BalancingRobotSimulator_m_b + LabB_ControllerOverSimulator_Continuous_P.Constant_Value;
+/* '<S3>:1:34' */
+/* '<S3>:1:37' */
+LabB_ControllerOverSimulator_Continuous_B.dx[0] = LabB_ControllerOverSimulator_Continuous_B.Integrator[1];
+/* '<S3>:1:38' */
+x_tmp = cos(LabB_ControllerOverSimulator_Continuous_B.Integrator[0]);
+dx_tmp = (LabB_ControllerOverSimulator_Continuous_P.BalancingRobotSimulator_K_e * LabB_ControllerOverSimulator_Continuous_P.BalancingRobotSimulator_K_t / LabB_ControllerOverSimulator_Continuous_P.BalancingRobotSimulator_R_m + LabB_ControllerOverSimulator_Continuous_P.BalancingRobotSimulator_b_f) * (LabB_ControllerOverSimulator_Continuous_B.Integrator[1] - LabB_ControllerOverSimulator_Continuous_B.Integrator[3] / LabB_ControllerOverSimulator_Continuous_P.equationsofmotion_l_w);
+rtb_saturationoftheactuators = LabB_ControllerOverSimulator_Continuous_P.BalancingRobotSimulator_K_t * rtb_saturationoftheactuators / LabB_ControllerOverSimulator_Continuous_P.BalancingRobotSimulator_R_m;
+dx_tmp_0 = sin(LabB_ControllerOverSimulator_Continuous_B.Integrator[0]);
+dx_tmp_1 = LabB_ControllerOverSimulator_Continuous_P.BalancingRobotSimulator_l_b * LabB_ControllerOverSimulator_Continuous_P.BalancingRobotSimulator_l_b;
+dx_tmp_2 = (LabB_ControllerOverSimulator_Continuous_P.equationsofmotion_l_w * m_t_b + LabB_ControllerOverSimulator_Continuous_P.equationsofmotion_l_w * LabB_ControllerOverSimulator_Continuous_P.equationsofmotion_m_w) + LabB_ControllerOverSimulator_Continuous_P.equationsofmotion_I_w / LabB_ControllerOverSimulator_Continuous_P.equationsofmotion_l_w;
+dx_tmp_3 = dx_tmp_1 * m_t_b + LabB_ControllerOverSimulator_Continuous_P.BalancingRobotSimulator_I_b * m_t_b / LabB_ControllerOverSimulator_Continuous_P.BalancingRobotSimulator_m_b;
+dx_tmp_4 = LabB_ControllerOverSimulator_Continuous_P.BalancingRobotSimulator_l_b * LabB_ControllerOverSimulator_Continuous_P.equationsofmotion_l_w * m_t_b;
+dx_tmp_5 = ((dx_tmp + rtb_saturationoftheactuators) - rtb_FromWs * LabB_ControllerOverSimulator_Continuous_P.BalancingRobotSimulator_l_b * x_tmp) - LabB_ControllerOverSimulator_Continuous_P.BalancingRobotSimulator_g * LabB_ControllerOverSimulator_Continuous_P.BalancingRobotSimulator_l_b * m_t_b * dx_tmp_0;
+dx_tmp = ((dx_tmp + rtb_FromWs * LabB_ControllerOverSimulator_Continuous_P.equationsofmotion_l_w) + rtb_saturationoftheactuators) + dx_tmp_4 * (LabB_ControllerOverSimulator_Continuous_B.Integrator[1] * LabB_ControllerOverSimulator_Continuous_B.Integrator[1]) * dx_tmp_0;
+rtb_saturationoftheactuators = dx_tmp_1 * LabB_ControllerOverSimulator_Continuous_P.equationsofmotion_l_w * (m_t_b * m_t_b);
+dx_tmp_0 = dx_tmp_3 * dx_tmp_2;
+LabB_ControllerOverSimulator_Continuous_B.dx[1] = (dx_tmp * (LabB_ControllerOverSimulator_Continuous_P.BalancingRobotSimulator_l_b * m_t_b * x_tmp) / dx_tmp_2 + dx_tmp_5) / ((rtb_saturationoftheactuators * (x_tmp * x_tmp) / dx_tmp_0 - 1.0) * dx_tmp_3);
+/* '<S3>:1:39' */
+LabB_ControllerOverSimulator_Continuous_B.dx[2] = LabB_ControllerOverSimulator_Continuous_B.Integrator[3];
+/* '<S3>:1:40' */
+LabB_ControllerOverSimulator_Continuous_B.dx[3] = -(dx_tmp_5 * (dx_tmp_4 * x_tmp) / dx_tmp_3 + dx_tmp) / ((rtb_saturationoftheactuators * (x_tmp * x_tmp) / dx_tmp_0 - 1.0) * dx_tmp_2);
+if ((LabB_ControllerOverSimulator_Continuous_B.Integrator[0] > 1.5707963267948966) || (LabB_ControllerOverSimulator_Continuous_B.Integrator[0] < -1.5707963267948966)) {
+    /* '<S3>:1:43' */
+    /* '<S3>:1:45' */
+    LabB_ControllerOverSimulator_Continuous_B.dx[0] = 0.0;
+    /* '<S3>:1:46' */
+    LabB_ControllerOverSimulator_Continuous_B.dx[1] = 0.0;
+    /* '<S3>:1:47' */
+    LabB_ControllerOverSimulator_Continuous_B.dx[2] = 0.0;
+    /* '<S3>:1:48' */
+    LabB_ControllerOverSimulator_Continuous_B.dx[3] = 0.0;
+}
+/* {E!d130}End of MATLAB Function: '<S1>/equations of motion' */
+%<SLibInsertSolverResetCode()>\
+%closefile cfgTxt
+%<cfgTxt>
+%<LibSetSystemField(system, "CachedOutputLocalVars", localVarDecl)>
+%endfunction
+%function OutputsFcnProtoType(block, system) Output
+%assign fcnProtoType = ""
+%openfile fcnProtoType
+static void Outputs(\
+%assign comma = ""
+%closefile fcnProtoType
+%<SLibCG_SetFcnProtoType(0, 2, fcnProtoType)>
+%endfunction

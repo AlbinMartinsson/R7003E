@@ -91,16 +91,29 @@ Dd = [0 0; 0 0; 0 0; 0 0];
 ss(A,Bd,Cd,Dd);
 
 
+
+
+bw = bandwidth(TF_SYS)/(2*pi)
+%bw = bandwidth(cl)/(2*pi)
+sf_min = 2*bw
+
+figure;
+bode(TF_SYS);
+figure;
+bode(cl);
+figure;
+bode(TF_SYS, cl)
+
 %--------------------------------------------------------------------
 % cascade experiments:
 %--------------------------------------------------------------------
 
 Cc = [0, 1, 0, 0];
 
-G2_ss = ss(A, B, Cc, 0)
-G2 = tf(G2_ss)
+G2_ss = ss(A, B, Cc, 0);
+G2 = tf(G2_ss);
 
-H = minreal(G2 * PID)
+H_w = minreal(G2 * PID);
 
 
 

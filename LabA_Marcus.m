@@ -1,3 +1,4 @@
+clear
 
 %LoadSymbolicParameters
 LabA_Solutions_LoadPhysicalParameters
@@ -127,16 +128,16 @@ Ts = 0.01;
 
 
 
-bw = bandwidth(TF_SYS)/(2*pi)
+%bw = bandwidth(TF_SYS)/(2*pi)
 %bw = bandwidth(cl)/(2*pi)
-sf_min = 2*bw
+%sf_min = 2*bw
 
-figure;
-bode(TF_SYS);
-figure;
-bode(cl);
-figure;
-bode(TF_SYS, cl)
+%figure;
+%bode(TF_SYS);
+%figure;
+%bode(cl);
+%figure;
+%bode(TF_SYS, cl)
 
 %--------------------------------------------------------------------
 % cascade experiments:
@@ -147,9 +148,11 @@ Cc = [0, 1, 0, 0];
 G2_ss = ss(A, B, Cc, 0);
 G2 = tf(G2_ss);
 
-H_w = minreal(G2 * PID);
+G1 = TF_SYS;
 
+C1 = PID;
 
+feedback(G1, C1);
 
-
+U = minreal(feedback(C1, G1));
 

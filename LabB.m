@@ -56,9 +56,9 @@ afSortedRoots = afSortedAllRoots(1:4);
 
 C = [1 0 0 0; 0 0 1 0];
 
-P_o = [P(1) * 4; P(2) * 4 + 0.01; P(3) * 4; P(4) * 4 - 0.01]
+P_o = [P(1) * 4; P(2) * 4 + 0.01; P(3) * 4; P(4) * 4 - 0.01];
 
-L = (place(A', C', P_o))'
+L = (place(A', C', P_o))';
 
 %--------------------------------------------
 %4.8.1 reduced order
@@ -68,10 +68,10 @@ L = (place(A', C', P_o))'
 V = [C(2,:);0, 1, 0, 0; 0, 0, 0, 1];
 C_notacc = C(2,:);
 C_acc = C(1,:);
-T_inv = [C(1,:) ; V]
+T_inv = [C(1,:) ; V];
 T = inv(T_inv);
 
-A_tilde = T_inv * A * T
+A_tilde = T_inv * A * T;
 B_tilde = T_inv * B;
 
 
@@ -81,24 +81,32 @@ B_tilde = T_inv * B;
  n = 4;
  m = 1;
  
- A_tilde_yy = A_tilde(m:m, m:m)
+ A_tilde_yy = A_tilde(1:m, 1:m);
+ A_tilde_yx = A_tilde(1:m, 1+m:n);
+ A_tilde_xy = A_tilde(1+m:n, 1:m);
+ A_tilde_xx = A_tilde(1+m:n, 1+m:n);
+ 
+ B_tilde_y = B_tilde(1:m);
+ B_tilde_x = B_tilde(1+m:n);
+ 
+ C_tilde_y = C_notacc_tilde(1:m);
+ C_tilde_x = C_notacc_tilde(1+m:n);
 % y_acc = C(1,;) * x
 % x_hat = T(:,1) * y_acc + T(:,2:)
 
+AA = A_tilde_xx;
+CC = [A_tilde_yx; C_tilde_x];
 
+L_r = (place(AA', CC', P_o(1+m:n)))';
+L_acc = [L_r(:, 1:m)];
+L_notacc = L_r(:, 1+m:size(L_r, 2));
 
+M1 = A_tilde_xx - L_acc * A_tilde_yx - L_notacc * C_tilde_x;
+M2 = B_tilde_x - L_acc * B_tilde_y;
+M3 = A_tilde_xy - L_acc * A_tilde_yy - L_notacc * C_tilde_y;
+M4 = L_notacc;
 
+M5 = L_acc
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+M6 = T(: , 1:m)
+M7 = T(: , 1+m:n)

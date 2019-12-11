@@ -1,0 +1,342 @@
+%implements s1_b0_axlyr_TLCInterface "C"
+
+%function getInputAddr_1_0_0_0_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&LabB_ControllerOverSimulator_Continuous_B.TmpSignalConversionAtToWorkspaceInport1" + SLibCG_ArrayIndexer(ucv, lcv, sigIdx)
+%endfunction
+
+%function getInput_1_0_0_0_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "LabB_ControllerOverSimulator_Continuous_B.TmpSignalConversionAtToWorkspaceInport1" + SLibCG_ArrayIndexer(ucv, lcv, sigIdx)
+%endfunction
+
+%function getDWorkAddr_1_0_0_0_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&LabB_ControllerOverSimulator_Continuous_DW.ToWorkspace_PWORK"
+%endfunction
+
+%function getDWork_1_0_0_0_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "LabB_ControllerOverSimulator_Continuous_DW.ToWorkspace_PWORK"
+%endfunction
+
+%function getInputAddr_1_1_0_0_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&LabB_ControllerOverSimulator_Continuous_B.Gain1"
+%endfunction
+
+%function getInput_1_1_0_0_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "LabB_ControllerOverSimulator_Continuous_B.Gain1"
+%endfunction
+
+%function getDWorkAddr_1_1_0_0_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&LabB_ControllerOverSimulator_Continuous_DW.ToWorkspace_PWORK_a"
+%endfunction
+
+%function getDWork_1_1_0_0_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "LabB_ControllerOverSimulator_Continuous_DW.ToWorkspace_PWORK_a"
+%endfunction
+
+%function getInputAddr_1_2_0_0_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&LabB_ControllerOverSimulator_Continuous_B.Integrator" + SLibCG_ArrayIndexer(ucv, lcv, sigIdx)
+%endfunction
+
+%function getInput_1_2_0_0_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "LabB_ControllerOverSimulator_Continuous_B.Integrator" + SLibCG_ArrayIndexer(ucv, lcv, sigIdx)
+%endfunction
+
+%function getDWorkAddr_1_2_0_0_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&LabB_ControllerOverSimulator_Continuous_DW.theta_b_PWORK"
+%endfunction
+
+%function getDWork_1_2_0_0_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "LabB_ControllerOverSimulator_Continuous_DW.theta_b_PWORK"
+%endfunction
+
+%function getInputAddr_1_3_0_0_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&LabB_ControllerOverSimulator_Continuous_B.Integrator" + SLibCG_ArrayIndexer(ucv, lcv, sigIdx)
+%endfunction
+
+%function getInput_1_3_0_0_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "LabB_ControllerOverSimulator_Continuous_B.Integrator" + SLibCG_ArrayIndexer(ucv, lcv, sigIdx)
+%endfunction
+
+%function getDWorkAddr_1_3_0_0_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&LabB_ControllerOverSimulator_Continuous_DW.x_w_PWORK"
+%endfunction
+
+%function getDWork_1_3_0_0_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "LabB_ControllerOverSimulator_Continuous_DW.x_w_PWORK"
+%endfunction
+
+%function getOutputAddr_1_9_0_0_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+%<SLibCGIRAccessLocalVar(1, 0, "")> %% rtb_FromWs
+
+%return "&rtb_FromWs"
+%endfunction
+
+%function getOutput_1_9_0_0_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+%<SLibCGIRAccessLocalVar(1, 0, "")> %% rtb_FromWs
+
+%return "rtb_FromWs"
+%endfunction
+
+%function getDWorkAddr_1_9_0_0_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&LabB_ControllerOverSimulator_Continuous_DW.FromWs_IWORK"
+%endfunction
+
+%function getDWork_1_9_0_0_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "LabB_ControllerOverSimulator_Continuous_DW.FromWs_IWORK"
+%endfunction
+
+%function getDWorkAddr_1_9_0_0_1_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&LabB_ControllerOverSimulator_Continuous_DW.FromWs_PWORK" + SLibCG_ArrayIndexer(ucv, lcv, sigIdx)
+%endfunction
+
+%function getDWork_1_9_0_0_1_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "LabB_ControllerOverSimulator_Continuous_DW.FromWs_PWORK" + SLibCG_ArrayIndexer(ucv, lcv, sigIdx)
+%endfunction
+
+%function getInputAddr_1_0_0_2_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&LabB_ControllerOverSimulator_Continuous_B.TmpSignalConversionAtToWorkspaceInport1" + SLibCG_ArrayIndexer(ucv, lcv, sigIdx)
+%endfunction
+
+%function getInput_1_0_0_2_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "LabB_ControllerOverSimulator_Continuous_B.TmpSignalConversionAtToWorkspaceInport1" + SLibCG_ArrayIndexer(ucv, lcv, sigIdx)
+%endfunction
+
+%function getDWorkAddr_1_0_0_2_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&LabB_ControllerOverSimulator_Continuous_DW.ToWorkspace_PWORK"
+%endfunction
+
+%function getDWork_1_0_0_2_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "LabB_ControllerOverSimulator_Continuous_DW.ToWorkspace_PWORK"
+%endfunction
+
+%function getInputAddr_1_1_0_2_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&LabB_ControllerOverSimulator_Continuous_B.Gain1"
+%endfunction
+
+%function getInput_1_1_0_2_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "LabB_ControllerOverSimulator_Continuous_B.Gain1"
+%endfunction
+
+%function getDWorkAddr_1_1_0_2_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&LabB_ControllerOverSimulator_Continuous_DW.ToWorkspace_PWORK_a"
+%endfunction
+
+%function getDWork_1_1_0_2_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "LabB_ControllerOverSimulator_Continuous_DW.ToWorkspace_PWORK_a"
+%endfunction
+
+%function getInputAddr_1_2_0_2_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&LabB_ControllerOverSimulator_Continuous_B.Integrator" + SLibCG_ArrayIndexer(ucv, lcv, sigIdx)
+%endfunction
+
+%function getInput_1_2_0_2_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "LabB_ControllerOverSimulator_Continuous_B.Integrator" + SLibCG_ArrayIndexer(ucv, lcv, sigIdx)
+%endfunction
+
+%function getDWorkAddr_1_2_0_2_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&LabB_ControllerOverSimulator_Continuous_DW.theta_b_PWORK"
+%endfunction
+
+%function getDWork_1_2_0_2_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "LabB_ControllerOverSimulator_Continuous_DW.theta_b_PWORK"
+%endfunction
+
+%function getInputAddr_1_3_0_2_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&LabB_ControllerOverSimulator_Continuous_B.Integrator" + SLibCG_ArrayIndexer(ucv, lcv, sigIdx)
+%endfunction
+
+%function getInput_1_3_0_2_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "LabB_ControllerOverSimulator_Continuous_B.Integrator" + SLibCG_ArrayIndexer(ucv, lcv, sigIdx)
+%endfunction
+
+%function getDWorkAddr_1_3_0_2_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&LabB_ControllerOverSimulator_Continuous_DW.x_w_PWORK"
+%endfunction
+
+%function getDWork_1_3_0_2_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "LabB_ControllerOverSimulator_Continuous_DW.x_w_PWORK"
+%endfunction
+
+%function getInputAddr_1_5_0_2_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+%<SLibCGIRAccessLocalVar(3, 0, "")> %% rtb_RateTransition1
+
+%return "&rtb_RateTransition1"
+%endfunction
+
+%function getInput_1_5_0_2_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+%<SLibCGIRAccessLocalVar(3, 0, "")> %% rtb_RateTransition1
+
+%return "rtb_RateTransition1"
+%endfunction
+
+%function getInputAddr_1_5_0_2_0_1(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&LabB_ControllerOverSimulator_Continuous_P.Constant1_Value"
+%endfunction
+
+%function getInput_1_5_0_2_0_1(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "LabB_ControllerOverSimulator_Continuous_P.Constant1_Value"
+%endfunction
+
+%function getInputAddr_1_7_0_2_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+%<SLibCGIRAccessLocalVar(4, 0, "")> %% rtb_RateTransition2
+
+%return "&rtb_RateTransition2"
+%endfunction
+
+%function getInput_1_7_0_2_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+%<SLibCGIRAccessLocalVar(4, 0, "")> %% rtb_RateTransition2
+
+%return "rtb_RateTransition2"
+%endfunction
+
+%function getInputAddr_1_7_0_2_0_1(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&LabB_ControllerOverSimulator_Continuous_P.Constant4_Value"
+%endfunction
+
+%function getInput_1_7_0_2_0_1(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "LabB_ControllerOverSimulator_Continuous_P.Constant4_Value"
+%endfunction
+
+%function getOutputAddr_1_9_0_2_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+%<SLibCGIRAccessLocalVar(1, 0, "")> %% rtb_FromWs
+
+%return "&rtb_FromWs"
+%endfunction
+
+%function getOutput_1_9_0_2_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+%<SLibCGIRAccessLocalVar(1, 0, "")> %% rtb_FromWs
+
+%return "rtb_FromWs"
+%endfunction
+
+%function getDWorkAddr_1_9_0_2_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&LabB_ControllerOverSimulator_Continuous_DW.FromWs_IWORK"
+%endfunction
+
+%function getDWork_1_9_0_2_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "LabB_ControllerOverSimulator_Continuous_DW.FromWs_IWORK"
+%endfunction
+
+%function getDWorkAddr_1_9_0_2_1_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&LabB_ControllerOverSimulator_Continuous_DW.FromWs_PWORK" + SLibCG_ArrayIndexer(ucv, lcv, sigIdx)
+%endfunction
+
+%function getDWork_1_9_0_2_1_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "LabB_ControllerOverSimulator_Continuous_DW.FromWs_PWORK" + SLibCG_ArrayIndexer(ucv, lcv, sigIdx)
+%endfunction
+
+%function getInputAddr_1_0_0_5_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&LabB_ControllerOverSimulator_Continuous_B.TmpSignalConversionAtToWorkspaceInport1" + SLibCG_ArrayIndexer(ucv, lcv, sigIdx)
+%endfunction
+
+%function getInput_1_0_0_5_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "LabB_ControllerOverSimulator_Continuous_B.TmpSignalConversionAtToWorkspaceInport1" + SLibCG_ArrayIndexer(ucv, lcv, sigIdx)
+%endfunction
+
+%function getDWorkAddr_1_0_0_5_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&LabB_ControllerOverSimulator_Continuous_DW.ToWorkspace_PWORK"
+%endfunction
+
+%function getDWork_1_0_0_5_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "LabB_ControllerOverSimulator_Continuous_DW.ToWorkspace_PWORK"
+%endfunction
+
+%function getInputAddr_1_1_0_5_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&LabB_ControllerOverSimulator_Continuous_B.Gain1"
+%endfunction
+
+%function getInput_1_1_0_5_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "LabB_ControllerOverSimulator_Continuous_B.Gain1"
+%endfunction
+
+%function getDWorkAddr_1_1_0_5_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&LabB_ControllerOverSimulator_Continuous_DW.ToWorkspace_PWORK_a"
+%endfunction
+
+%function getDWork_1_1_0_5_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "LabB_ControllerOverSimulator_Continuous_DW.ToWorkspace_PWORK_a"
+%endfunction
+
+%function getOutputAddr_1_9_0_5_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+%<SLibCGIRAccessLocalVar(1, 0, "")> %% rtb_FromWs
+
+%return "&rtb_FromWs"
+%endfunction
+
+%function getOutput_1_9_0_5_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+%<SLibCGIRAccessLocalVar(1, 0, "")> %% rtb_FromWs
+
+%return "rtb_FromWs"
+%endfunction
+
+%function getDWorkAddr_1_9_0_5_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&LabB_ControllerOverSimulator_Continuous_DW.FromWs_IWORK"
+%endfunction
+
+%function getDWork_1_9_0_5_0_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "LabB_ControllerOverSimulator_Continuous_DW.FromWs_IWORK"
+%endfunction
+
+%function getDWorkAddr_1_9_0_5_1_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "&LabB_ControllerOverSimulator_Continuous_DW.FromWs_PWORK" + SLibCG_ArrayIndexer(ucv, lcv, sigIdx)
+%endfunction
+
+%function getDWork_1_9_0_5_1_0(opaqueBlock, block, lcv, ucv, sigIdx, reim) void
+
+%return "LabB_ControllerOverSimulator_Continuous_DW.FromWs_PWORK" + SLibCG_ArrayIndexer(ucv, lcv, sigIdx)
+%endfunction
+

@@ -1,0 +1,6 @@
+addpath('C:\MATLAB\RASPlib\RASPlib')
+addpath('C:\MATLAB\RASPlib\RASPlib\src')
+addpath('C:\MATLAB\RASPlib\RASPlib\include')
+addpath('C:\MATLAB\RASPlib\RASPlib\examples')
+addpath('C:\MATLAB\RASPlib\RASPlib\blocks')
+addpath('H:\R7003E-master\R7003E-master')

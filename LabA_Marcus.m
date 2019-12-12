@@ -65,16 +65,16 @@ s = tf('s');
 %New values of Kp, Ki and Kd
 
 k = -90.03;
-Kp = (- p(1)*p(2) - p(2)*p(3) - p(1)*p(3) + pcl(1)*pcl(2) + pcl(2)*pcl(3) + pcl(1)*pcl(3)) / k;
-Ki = (p(1)*p(2)*p(3) - pcl(1)*pcl(2)*pcl(3)) / k;
-Kd = (p(1) + p(2) + p(3)  -  pcl(1) - pcl(2) - pcl(3)) / k;
+kP = (- p(1)*p(2) - p(2)*p(3) - p(1)*p(3) + pcl(1)*pcl(2) + pcl(2)*pcl(3) + pcl(1)*pcl(3)) / k;
+kI = (p(1)*p(2)*p(3) - pcl(1)*pcl(2)*pcl(3)) / k;
+kD = (p(1) + p(2) + p(3)  -  pcl(1) - pcl(2) - pcl(3)) / k;
 
 %syms Kp Kd Ki
 %syms z1 p1 p2 p3
 %syms s
 %SYS = (s-z1) / ( (s-p1)*(s-p2)*(s-p3) )
 
-PID = Kp + Ki/s + s*Kd;
+PID = kP + kI/s + s*kD;
 cl =  feedback(TF_SYS, PID);
 pole(cl);
 
@@ -155,4 +155,3 @@ C1 = PID;
 feedback(G1, C1);
 
 U = minreal(feedback(C1, G1));
-

@@ -97,7 +97,8 @@ B_tilde = T_inv * B;
 AA = A_tilde_xx;
 CC = [A_tilde_yx; C_tilde_x];
 
-L_r = (place(AA', CC', P_o(1+m:n)))';
+%L_r = (place(AA', CC', P_o(1+m:n)))';
+L_r = (place(AA', CC', P_o(1:n-1)))';
 L_acc = [L_r(:, 1:m)];
 L_notacc = L_r(:, 1+m:size(L_r, 2));
 
@@ -106,7 +107,83 @@ M2 = B_tilde_x - L_acc * B_tilde_y;
 M3 = A_tilde_xy - L_acc * A_tilde_yy - L_notacc * C_tilde_y;
 M4 = L_notacc;
 
-M5 = L_acc
+M5 = L_acc;
 
-M6 = T(: , 1:m)
-M7 = T(: , 1+m:n)
+M6 = T(: , 1:m);
+M7 = T(: , 1+m:n);
+
+
+%--------------------------------------------
+%4.9.1 discrete system
+%TODO ... 
+%--------------------------------------------
+
+SYSD = c2d(ss(A,B,C,0),Ts, 'zoh');
+
+Ad = SYSD.A;
+Bd = SYSD.B;
+Cd = SYSD.C;
+Dd = SYSD.D;
+
+P_d = exp(P*Ts);
+
+P_od = exp(P_o*Ts);
+
+Ld = (place(Ad', Cd', P_od))';
+
+Kd = acker(Ad,Bd,P_d);
+
+V_d = [Cd(2,:);0, 1, 0, 0; 0, 0, 0, 1];
+C_d_notacc = Cd(2,:);
+C_d_acc = Cd(1,:);
+T_d_inv = [Cd(1,:) ; V_d];
+T_d = inv(T_d_inv);
+
+A_d_tilde = T_d_inv * Ad * T_d;
+B_d_tilde = T_d_inv * Bd;
+
+
+ C_d_acc_tilde = C_d_acc * T_d;
+ C_d_notacc_tilde = C_d_notacc * T_d;
+
+ n = 4;
+ m = 1;
+ 
+ A_d_tilde_yy = A_d_tilde(1:m, 1:m);
+ A_d_tilde_yx = A_d_tilde(1:m, 1+m:n);
+ A_d_tilde_xy = A_d_tilde(1+m:n, 1:m);
+ A_d_tilde_xx = A_d_tilde(1+m:n, 1+m:n);
+ 
+ B_d_tilde_y = B_d_tilde(1:m);
+ B_d_tilde_x = B_d_tilde(1+m:n);
+ 
+ C_d_tilde_y = C_d_notacc_tilde(1:m);
+ C_d_tilde_x = C_d_notacc_tilde(1+m:n);
+% y_acc = C_d(1,;) * x
+% x_hat = T_d(:,1) * y_acc + T_d(:,2:)
+
+AA_d = A_d_tilde_xx;
+CC_d = [A_d_tilde_yx; C_d_tilde_x];
+
+%L_d_r = (place(AA_d', CC_d', P_od(1+m:n)))';
+L_d_r = (place(AA_d', CC_d',P_o(1:n-1)))';
+L_d_acc = [L_d_r(:, 1:m)];
+L_d_notacc = L_d_r(:, 1+m:size(L_d_r, 2));
+
+Md1 = A_d_tilde_xx - L_d_acc * A_d_tilde_yx - L_d_notacc * C_d_tilde_x;
+Md2 = B_d_tilde_x - L_d_acc * B_d_tilde_y;
+Md3 = A_d_tilde_xy - L_d_acc * A_d_tilde_yy - L_d_notacc * C_d_tilde_y;
+Md4 = L_d_notacc;
+
+Md5 = L_d_acc;
+
+Md6 = T_d(: , 1:m);
+Md7 = T_d(: , 1+m:n);
+
+
+
+
+
+
+
+

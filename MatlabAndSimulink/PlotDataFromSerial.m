@@ -1,5 +1,5 @@
 % auxiliary variable indicating what to print
-aiDataIndexes = (iPacketIndex-iNumberOfPacketsToPlotPerTime+1):iPacketIndex;
+aiDataIndexes = (1):iPacketIndex;
 
 
 % plot the received information

@@ -165,8 +165,8 @@ B_d_tilde = T_d_inv * Bd;
 AA_d = A_d_tilde_xx;
 CC_d = [A_d_tilde_yx; C_d_tilde_x];
 
-%L_d_r = (place(AA_d', CC_d', P_od(1+m:n)))';
-L_d_r = (place(AA_d', CC_d',P_o(1:n-1)))';
+L_d_r = (place(AA_d', CC_d', P_od(1+m:n)))';
+%L_d_r = (place(AA_d', CC_d',P_o(1:n-1)))';
 L_d_acc = [L_d_r(:, 1:m)];
 L_d_notacc = L_d_r(:, 1+m:size(L_d_r, 2));
 
@@ -180,6 +180,7 @@ Md5 = L_d_acc;
 Md6 = T_d(: , 1:m);
 Md7 = T_d(: , 1+m:n);
 
+fSamplingPeriod = Ts;
 
 
 

@@ -3,13 +3,13 @@ clear all;
 clc;
 
 
-LabB_Solutions
+LabB
 
 
 % load the PID
-kP = -46.6;
-kI = -260;
-kD = -0.1;
+%kP = -46.6;
+%kI = -260;
+%kD = -0.1;
 
 
 % 
